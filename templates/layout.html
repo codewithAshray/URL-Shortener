@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href='{{url_for("static", filename="mystyle.css")}}'>
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    <div class="topnav">
+        <nav>
+            <a class="active" href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('history') }}">History</a>
+        </nav>
+    </div>
+    <div class="main">
+        <h1 id="heading">URL Shortner</h1>
+        <h3 id="slogan">Make your URL short</h3>
+    </div>
+    <hr>
+    {% block body %}
+    {% endblock body %}
+    <script>
+    <!-- This script is to remove the stored data when ever page is refresh. -->
+        if ( window.history.replaceState ) {
+          window.history.replaceState( null, null, window.location.href );
+        }
+    <!--  This is used to copy he shortcut URL      -->
+       function CopyToClipboard(id){
+           var r = document.createRange();
+           r.selectNode(document.getElementById(id));
+           window.getSelection().removeAllRanges();
+           window.getSelection().addRange(r);
+           document.execCommand('copy');
+           window.getSelection().removeAllRanges();
+        }
+    </script>
+</body>
+</html>

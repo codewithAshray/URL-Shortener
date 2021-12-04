@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+    History
+{% endblock title %}
+
+{% block body %}
+    <p id="hist">History Table</p>
+    <div>
+        <table id="customers">
+        <tr>
+            <th>Original URL</th>
+            <th>Short URL</th>
+        </tr>
+        {% for log in userDetails %}
+        <tr>
+            <td>{{ log[0] }}</td>
+            <td>{{ log[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+{% endblock body %}

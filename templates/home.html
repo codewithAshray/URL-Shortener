@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block body %}
+    <div class="elm">
+        <form method="post">
+            <label>Enter URL :</label>
+            <input type="text" name="data" value="https://" id="input" size=1000>
+            <input type="submit" value="Shorten">
+        </form>
+        {% if flag == 200 %}
+            <p id = "sample">Short Url: {{ link }}</p>
+            <button id="btn" onclick="CopyToClipboard('sample')">Copy URL</button>
+        {% endif %}
+        {% if flag == False %}
+            <p style="color:red">Please enter a valid URL</p>
+        {% endif %}
+    </div>
+{% endblock body %}
